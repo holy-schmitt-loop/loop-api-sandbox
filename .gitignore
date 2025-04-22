@@ -1,0 +1,29 @@
+# Node
+node_modules/
+npm-debug.log*
+.env
+.env.*.local
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# Python (for future use)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+
+# Misc
+*.swp
+*.swo
