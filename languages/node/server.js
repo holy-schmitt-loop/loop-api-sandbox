@@ -1,15 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { setupNgrok } = require('./ngrok');
 const webhookHandler = require('./webhooks/webhookHandler');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+// Capture raw body string
+app.use(
+  bodyParser.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
+  })
+);
+
 app.post('/webhook', webhookHandler);
 
-app.listen(PORT, async () => {
+app.listen(PORT, () => {
   console.log(`🚀 Server listening on port ${PORT}`);
-  await setupNgrok(PORT);
 });

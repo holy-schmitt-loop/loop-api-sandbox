@@ -1,6 +1,6 @@
 # 🧪 loop-api-sandbox
 
-A local developer sandbox for testing and exploring [Loop Returns](https://docs.loopreturns.com/welcome) APIs and webhooks.
+A developer sandbox for testing and exploring [Loop Returns](https://help.loopreturns.com/hc/en-us/categories/11378293482075-API-Documentation) APIs and webhooks.
 
 This is **not a production-ready repo** — it's a lightweight playground to help developers:
 
@@ -8,7 +8,7 @@ This is **not a production-ready repo** — it's a lightweight playground to hel
 - Experiment with authenticated API calls to Loop endpoints
 - Prototype return automation and middleware logic
 
-Currently implemented in **Node.js** (see [`languages/node`](languages/node)) with Express and ngrok.
+Currently implemented in **Node.js** (see [`languages/node`](languages/node)) with Express.
 
 ---
 
@@ -18,14 +18,25 @@ Currently implemented in **Node.js** (see [`languages/node`](languages/node)) wi
 cd languages/node
 cp .env.example .env         # Add your Loop API key
 npm install
+```
+
+### In one terminal:
+
+```bash
 npm run dev
+```
+
+### In a second terminal:
+
+```bash
+ngrok http 3000
 ```
 
 The app will:
 
 - Spin up an Express server on `localhost:3000`
 - Log incoming webhook payloads to `/webhook`
-- Expose a public URL via ngrok (shown in terminal)
+- Let `ngrok` expose a public URL (shown in your second terminal)
 
 ---
 
@@ -43,7 +54,7 @@ The app will:
 loop-api-sandbox/
 ├── README.md               ← This file
 ├── languages/
-│   └── node/               ← Node.js version (Express + ngrok)
+│   └── node/               ← Node.js version (Express)
 │       ├── server.js
 │       ├── webhooks/
 │       ├── utils/
