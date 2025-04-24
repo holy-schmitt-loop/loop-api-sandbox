@@ -1,4 +1,4 @@
-const { loopApiRequest } = require('./core');
+const { loopApiRequest } = require('../core');
 
 /**
  * Get return details using return_id, order_id, or order_name
@@ -21,6 +21,35 @@ async function getDetailedReturnsList(params) {
 }
 
 /**
+ * Auto-paginate through all return results for a date range + state
+ * @param {object} params - Must include `from`, `to`, and optional `state`
+ * @returns {Promise<object[]>} Combined array of all return results
+ */
+async function getAllDetailedReturns(params) {
+  const limit = 100;
+  let page = 1;
+  let allReturns = [];
+
+  while (true) {
+    const response = await getDetailedReturnsList({ ...params, page, limit });
+
+    const results = response || []; // ✅ fallback
+    console.log(`🔁 Page ${page}: Got ${results.length} results`);
+    console.log(results);
+    if (!Array.isArray(results)) {
+      throw new Error(`Expected array but got: ${typeof results}`);
+    }
+
+    allReturns.push(...results);
+
+    if (results.length < limit) break;
+    page++;
+  }
+
+  return allReturns;
+}
+
+/**
  * Get a bulk ASN (Advanced Shipping Notice) report by date range
  * @param {object} params - { from, to }
  * @returns {Promise<object[]>} Array of ASN entries
@@ -34,4 +63,5 @@ module.exports = {
   getReturnDetails,
   getDetailedReturnsList,
   getReturnASNReport,
+  getAllDetailedReturns,
 };

@@ -1,5 +1,5 @@
 require('dotenv').config(); // Load environment variables
-const { getReturnDetails } = require('../api/returnData');
+const { getReturnDetails } = require('../api');
 
 // Replace with an actual return_id, order_id, or order_name from your dev environment
 const input = {

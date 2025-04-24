@@ -1,4 +1,4 @@
-const { loopApiRequest } = require('./core');
+const { loopApiRequest } = require('../core');
 
 /**
  * List all label requests (filtered by return_id, date, status, etc.)

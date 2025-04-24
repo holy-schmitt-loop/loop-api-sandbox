@@ -1,4 +1,4 @@
-const { loopApiRequest } = require('./core');
+const { loopApiRequest } = require('../core');
 
 /**
  * Process a return manually (e.g. for refund, exchange, store credit)

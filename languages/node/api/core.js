@@ -22,7 +22,7 @@ async function loopApiRequest(
       },
       data,
     });
-
+    console.log('response:\n', response.data);
     return response.data;
   } catch (err) {
     const status = err.response?.status;
@@ -44,3 +44,7 @@ async function loopApiRequest(
     throw err;
   }
 }
+
+module.exports = {
+  loopApiRequest,
+};

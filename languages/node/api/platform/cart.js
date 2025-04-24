@@ -1,4 +1,4 @@
-const { loopApiRequest } = require('./core');
+const { loopApiRequest } = require('../core');
 
 /**
  * Create a cart object with one or more variant IDs.

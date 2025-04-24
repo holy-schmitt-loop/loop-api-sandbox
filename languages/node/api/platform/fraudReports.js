@@ -1,4 +1,4 @@
-const { loopApiRequest } = require('./core');
+const { loopApiRequest } = require('../core');
 
 /**
  * Create a fraud report for a return
