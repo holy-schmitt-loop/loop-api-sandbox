@@ -15,7 +15,7 @@
 
 require('dotenv').config(); // Load Loop API key from .env
 
-const { getAllDetailedReturns } = require('../api/returnData');
+const { getAllDetailedReturns } = require('../api');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
 
