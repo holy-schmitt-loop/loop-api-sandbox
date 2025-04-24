@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="graphics/loop-se-banner.png" alt="Virtual SE Logo" width="100%"/>
+</p>
+
 # 🧪 loop-api-sandbox
 
 This repository is a **developer sandbox for exploring, testing, and integrating with Loop Returns’ APIs and webhooks**. It serves as both a playground and a reference implementation for developers building into Loop.
