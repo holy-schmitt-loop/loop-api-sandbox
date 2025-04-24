@@ -4,10 +4,10 @@ This folder contains a sandbox environment for working with the Loop Returns API
 
 It includes:
 
-- ✅ API helper modules organized by function
+- ✅ API helper modules organized into `platform/` and `commerce-data/` domains
 - ✅ Scenario scripts that demonstrate real-world use cases
 - ✅ Core request handling via `axios`, with automatic retry for rate limits
-- ✅ Experimental support for Loop’s Commerce Data APIs (headless + platform-agnostic)
+- ✅ Support for Loop’s platform-agnostic Commerce Data APIs
 
 ---
 
@@ -16,30 +16,32 @@ It includes:
 ```
 languages/node/
 ├── api/
-│   ├── core.js                # Axios wrapper + retry logic
-│   ├── returnData.js          # GET /warehouse/return/details, /list, etc.
-│   ├── returnActions.js       # Actions: process, cancel, flag, etc.
-│   ├── webhooks.js            # Programmatic webhook management
-│   ├── labelRequests.js       # Label + status handling
-│   ├── destinations.js        # Return destination config
-│   ├── listings.js            # Blocklist / Allowlist APIs
-│   ├── fraudReports.js        # Flagging fraud cases
-│   ├── happyReturns.js        # Shipment tracking via Happy Returns
-│   ├── itemGrading.js         # Grade/assess item condition
-│   └── commerce-data/
-│       ├── orders.js
-│       ├── products.js
-│       ├── customers.js
-│       ├── locations.js
-│       ├── inventories.js
-│       ├── collections.js
-│       └── bulkOperations.js
+│   ├── core.js
+│   ├── platform/               # Native Loop platform APIs
+│   │   ├── returnData.js
+│   │   ├── returnActions.js
+│   │   ├── webhooks.js
+│   │   ├── destinations.js
+│   │   ├── labelRequests.js
+│   │   ├── listings.js
+│   │   ├── fraudReports.js
+│   │   ├── happyReturns.js
+│   │   └── itemGrading.js
+│   ├── commerce-data/         # Platform-agnostic data model (Loop as system of record)
+│   │   ├── orders.js
+│   │   ├── products.js
+│   │   ├── customers.js
+│   │   ├── locations.js
+│   │   ├── inventories.js
+│   │   ├── collections.js
+│   │   └── bulkOperations.js
 ├── scenarios/
-│   └── listReturnsInReview.js  # Sample scenario script
+│   └── listReturnsInReview.js
+│   └── getReturnDetails.js
 ├── utils/
-│   ├── validateSignature.js    # Webhook signature check
-│   └── multipart.js            # Helper to build FormData for uploads
-├── .env                         # Your API key (not committed)
+│   ├── validateSignature.js
+│   └── multipart.js
+├── .env
 └── package.json
 ```
 
@@ -47,8 +49,8 @@ languages/node/
 
 ## 🚀 Getting Started
 
-1. Run `npm install` to install dependencies
-2. Add your API key to a `.env` file:
+1. Run `npm install`
+2. Add your API key to a `.env` file in this folder:
    ```
    LOOP_API_KEY=your-loop-api-key
    ```
@@ -61,29 +63,41 @@ languages/node/
 
 ## 🧪 Scenarios
 
-Each file in `/scenarios` demonstrates how to combine helpers and implement a real-world integration flow.
+Scenarios are simple `.js` scripts under `/scenarios` that demonstrate how to combine API helpers into functional flows.
 
 - `listReturnsInReview.js`  
-  Fetches all returns in the `review` state over the last 30 days
+  Fetches all returns in the `review` state created in the last 30 days (auto-paginated)
 
 ---
 
-## 🧱 Commerce Data API Support
+## 🧱 API Helper Modules
 
-Under `api/commerce-data/` you'll find helper modules for Loop’s platform-agnostic object models:
+### `platform/` – Loop platform-native APIs
+
+- Returns
+- Return actions
+- Webhooks
+- Label requests
+- Destinations
+- Blocklist/allowlist
+- Fraud reports
+- Happy Returns shipments
+- Item grading
+
+### `commerce-data/` – Loop as system of record
 
 - Orders
-- Products & Variants
+- Products + Variants
 - Customers
 - Locations
-- Inventory
+- Inventories
 - Collections
 - Bulk Operations
 
-These power modern headless setups and merchant integrations outside Shopify.
-
 ---
 
-## 🧠 Want to Contribute a Scenario?
+## 🧠 Adding Your Own
 
-Just drop a `.js` file in `scenarios/`, import any helpers from `/api`, and wire up a focused use case.
+1. Create a new script in `scenarios/`
+2. Import what you need from `api/`
+3. Run with `node scenarios/yourScript.js` from within the `node/` folder.
