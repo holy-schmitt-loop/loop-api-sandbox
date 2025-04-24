@@ -47,26 +47,51 @@ languages/node/
 
 ---
 
-## 🚀 Getting Started
+## 📖 Scenario Scripts
 
-1. Run `npm install`
-2. Add your API key to a `.env` file in this folder:
+This folder contains example scripts under `scenarios/` that demonstrate how to use the Loop Returns API in real-world situations. Below is a list of each scenario and what it does:
+
+### `listReturnsInReview.js`
+
+Lists all returns created in the last 30 days that are currently in the `review` state. This script:
+
+- Uses Loop's `GET /warehouse/return/list` endpoint
+- Filters returns by creation date and review state
+- Handles pagination automatically
+- Prints a JSON list of all matching returns
+
+**Use cases:** Auditing, exporting review queues, or validating returns in review.
+
+### `getReturnDetails.js`
+
+Fetches detailed information about a specific return using its `return_id`, `order_id`, or `order_name`. This script:
+
+- Calls a helper function to retrieve return details
+- Prints the full return details as JSON
+
+**Use cases:** Investigating the status of a particular return, debugging, or integrating with other systems that need return data.
+
+### ▶️ How to Run Scenario Scripts
+
+To run any scenario script:
+
+1. Open your terminal and navigate to the `languages/node/` folder:
+   ```sh
+   cd languages/node/
    ```
+2. Make sure you've installed dependencies:
+   ```sh
+   npm install
+   ```
+3. Add your API key to a `.env` file in this folder:
+   ```sh
    LOOP_API_KEY=your-loop-api-key
    ```
-3. Run a scenario:
-   ```
+4. Run a scenario using Node.js from within the `languages/node/` directory, for example:
+   ```sh
    node scenarios/listReturnsInReview.js
+   node scenarios/getReturnDetails.js
    ```
-
----
-
-## 🧪 Scenarios
-
-Scenarios are simple `.js` scripts under `/scenarios` that demonstrate how to combine API helpers into functional flows.
-
-- `listReturnsInReview.js`  
-  Fetches all returns in the `review` state created in the last 30 days (auto-paginated)
 
 ---
 
