@@ -1,50 +1,19 @@
 # 🧪 loop-api-sandbox
 
-A developer sandbox for testing and exploring [Loop Returns](https://help.loopreturns.com/hc/en-us/categories/11378293482075-API-Documentation) APIs and webhooks.
-
-This is **not a production-ready repo** — it's a lightweight playground to help developers:
-
-- Receive and log webhook events from Loop
-- Experiment with authenticated API calls to Loop endpoints
-- Prototype return automation and middleware logic
-
-Currently implemented in **Node.js** (see [`languages/node`](languages/node)) with Express.
+This repository is a **developer sandbox for exploring, testing, and integrating with Loop Returns’ APIs and webhooks**. It serves as both a playground and a reference implementation for developers building into Loop.
 
 ---
 
-## 🚀 Quick Start (Node Version)
+## 💡 What’s Included
 
-```bash
-cd languages/node
-cp .env.example .env         # Add your Loop API key
-npm install
-```
+- 🛠️ Modular helper functions for every public Loop API
+- 🧪 Real-world scenario scripts for tasks like:
+- 🔁 Webhook handling and validation utilities
+- 🧱 Support for both:
+  - **Platform APIs** – tightly coupled to Loop’s return system
+  - **Commerce Data APIs** – decoupled, headless-first models (e.g. products, variants, inventory)
 
-### In one terminal:
-
-```bash
-npm run dev
-```
-
-### In a second terminal:
-
-```bash
-ngrok http 3000
-```
-
-The app will:
-
-- Spin up an Express server on `localhost:3000`
-- Log incoming webhook payloads to `/webhook`
-- Let `ngrok` expose a public URL (shown in your second terminal)
-
----
-
-## 🔗 Configuring Webhooks in Loop
-
-1. Go to your Loop Admin → Settings → Webhooks
-2. Add your ngrok URL + `/webhook` path (e.g. `https://abc123.ngrok.io/webhook`)
-3. Trigger return events to see them logged in your terminal
+Whether you’re testing return flows, integrating with an OMS, or experimenting with Loop’s APIs — this repo gives you a running start.
 
 ---
 
@@ -54,17 +23,28 @@ The app will:
 loop-api-sandbox/
 ├── README.md               ← This file
 ├── languages/
-│   └── node/               ← Node.js version (Express)
-│       ├── server.js
-│       ├── webhooks/
-│       ├── utils/
+│   └── node/               ← Node.js implementation (see its README)
+│       ├── api/
+│       │   ├── platform/       # Core Loop-native APIs
+│       │   └── commerce-data/  # Headless data model helpers
+│       ├── scenarios/          # Sample automation & API usage scripts
+│       ├── utils/              # Helper functions (e.g. signature verification)
+│       ├── .env                # API key lives here (not committed)
 │       └── ...
 ```
 
-Other languages (Python, Ruby, etc.) can be added in the `languages/` folder in the future.
+Other languages (e.g. Python, Go, Ruby) can be added to `languages/` over time.
+
+---
+
+## 🔐 API Access
+
+To use any scripts or helpers, you’ll need a valid **Loop API key** from an active Loop instance. API docs can be found at:
+
+👉 https://docs.loopreturns.com/api-reference/
 
 ---
 
 ## ⚠️ Disclaimer
 
-This is a developer sandbox. Use at your own risk. Not maintained for production deployments.
+This is a developer sandbox. It is not maintained for production use.
