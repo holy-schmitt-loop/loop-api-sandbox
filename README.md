@@ -21,6 +21,25 @@ Whether you’re testing return flows, integrating with an OMS, or experimenting
 
 ---
 
+## 🌐 Language Support & Feature Status
+
+| Language                   | API Helpers | Webhook Listener/Handler | Scenario Files | Utils/Helpers | Documentation |
+| -------------------------- | :---------: | :----------------------: | :------------: | :-----------: | :-----------: |
+| [Node.js](languages/node/) |     ✅      |            ✅            |       🟡       |      ✅       |      ✅       |
+| TypeScript                 |     🟡      |           ⬜️            |      ⬜️       |      ⬜️      |      ⬜️      |
+| Python                     |     ⬜️     |           ⬜️            |      ⬜️       |      ⬜️      |      ⬜️      |
+| PHP                        |     ⬜️     |           ⬜️            |      ⬜️       |      ⬜️      |      ⬜️      |
+| Go                         |     ⬜️     |           ⬜️            |      ⬜️       |      ⬜️      |      ⬜️      |
+| Java                       |     ⬜️     |           ⬜️            |      ⬜️       |      ⬜️      |      ⬜️      |
+
+**Legend:**
+
+- ✅ = Complete
+- 🟡 = In Progress
+- ⬜️ = Not Started
+
+---
+
 ## 📂 Project Structure
 
 ```bash
