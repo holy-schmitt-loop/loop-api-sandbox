@@ -27,3 +27,10 @@ venv/
 # Misc
 *.swp
 *.swo
+
+# TypeScript build output (node-typescript)
+languages/node-typescript/dist/
+languages/node-typescript/node_modules/
+languages/node-typescript/*.env
+languages/node-typescript/*.log
+languages/node-typescript/package-lock.json
